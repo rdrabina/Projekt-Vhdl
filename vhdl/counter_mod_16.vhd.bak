@@ -1,0 +1,50 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity counter_mod_16 is
+	port(
+		clk : in std_logic;
+		counter_direction : in std_logic;
+		a,b,c,d,e,f,g,a2,b2,c2,d2,e2,f2,g2 : out std_logic
+		);
+end counter_mod_16;
+
+architecture Behavioral of counter_mod_16 is
+
+	component transcoder
+		port(
+		t_counter : in std_logic_vector (3 downto 0);
+		a_out,b_out,c_out,d_out,e_out,f_out,g_out,a2_out,b2_out,c2_out,d2_out,e2_out,f2_out,g2_out  : out std_logic
+		);
+	end component;
+
+	component counter
+		port(
+		c_counting_direction : in std_logic;
+		c_clk: in std_logic;
+		c_counter : out std_logic_vector(3 downto 0)
+		);
+	end component;
+	
+	component divider
+		port(
+		d_clk : in std_logic;
+		d_clk_divided : out std_logic
+		);
+	end component;
+
+	signal clk_divided : std_logic;
+	signal counter_val : std_logic_vector(3 downto 0);
+
+begin
+	transkoder : transcoder port map (t_counter=>counter_val,a_out=>a,b_out=>b,c_out=>c,d_out=>d,e_out=>e,f_out=>f,g_out=>g,a2_out=>a2,b2_out=>b2,c2_out=>c2,d2_out=>d2,e2_out=>e2,f2_out=>f2,g2_out=>g2);
+	dzielnik : divider port map (d_clk => clk, d_clk_divided => clk_divided);
+	licznik : counter port map (c_counting_direction=>counter_direction, c_clk=>clk_divided,c_counter=>counter_val);
+	
+
+end Behavioral;	
+		
+	
+		

@@ -1,0 +1,128 @@
+|counter_mod_16
+clk => divider:dzielnik.d_clk
+counter_direction => counter:licznik.c_counting_direction
+a <= transcoder:transkoder.a_out
+b <= transcoder:transkoder.b_out
+c <= transcoder:transkoder.c_out
+d <= transcoder:transkoder.d_out
+e <= transcoder:transkoder.e_out
+f <= transcoder:transkoder.f_out
+g <= transcoder:transkoder.g_out
+a2 <= transcoder:transkoder.a2_out
+b2 <= transcoder:transkoder.b2_out
+c2 <= transcoder:transkoder.c2_out
+d2 <= transcoder:transkoder.d2_out
+e2 <= transcoder:transkoder.e2_out
+f2 <= transcoder:transkoder.f2_out
+g2 <= transcoder:transkoder.g2_out
+
+
+|counter_mod_16|divider:dzielnik
+d_clk => counter[31].CLK
+d_clk => counter[30].CLK
+d_clk => counter[29].CLK
+d_clk => counter[28].CLK
+d_clk => counter[27].CLK
+d_clk => counter[26].CLK
+d_clk => counter[25].CLK
+d_clk => counter[24].CLK
+d_clk => counter[23].CLK
+d_clk => counter[22].CLK
+d_clk => counter[21].CLK
+d_clk => counter[20].CLK
+d_clk => counter[19].CLK
+d_clk => counter[18].CLK
+d_clk => counter[17].CLK
+d_clk => counter[16].CLK
+d_clk => counter[15].CLK
+d_clk => counter[14].CLK
+d_clk => counter[13].CLK
+d_clk => counter[12].CLK
+d_clk => counter[11].CLK
+d_clk => counter[10].CLK
+d_clk => counter[9].CLK
+d_clk => counter[8].CLK
+d_clk => counter[7].CLK
+d_clk => counter[6].CLK
+d_clk => counter[5].CLK
+d_clk => counter[4].CLK
+d_clk => counter[3].CLK
+d_clk => counter[2].CLK
+d_clk => counter[1].CLK
+d_clk => counter[0].CLK
+d_clk => clk_out.CLK
+d_clk_divided <= clk_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter_mod_16|counter:licznik
+c_counting_direction => actual_value~11.OUTPUTSELECT
+c_counting_direction => actual_value~10.OUTPUTSELECT
+c_counting_direction => actual_value~9.OUTPUTSELECT
+c_counting_direction => actual_value~8.OUTPUTSELECT
+c_clk => actual_value[3].CLK
+c_clk => actual_value[2].CLK
+c_clk => actual_value[1].CLK
+c_clk => actual_value[0].CLK
+c_counter[0] <= actual_value[0].DB_MAX_OUTPUT_PORT_TYPE
+c_counter[1] <= actual_value[1].DB_MAX_OUTPUT_PORT_TYPE
+c_counter[2] <= actual_value[2].DB_MAX_OUTPUT_PORT_TYPE
+c_counter[3] <= actual_value[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter_mod_16|transcoder:transkoder
+t_counter[0] => Mux10.IN19
+t_counter[0] => Mux9.IN19
+t_counter[0] => Mux8.IN19
+t_counter[0] => Mux7.IN19
+t_counter[0] => Mux6.IN19
+t_counter[0] => Mux5.IN19
+t_counter[0] => Mux4.IN19
+t_counter[1] => Mux10.IN18
+t_counter[1] => Mux9.IN18
+t_counter[1] => Mux8.IN18
+t_counter[1] => Mux7.IN18
+t_counter[1] => Mux6.IN18
+t_counter[1] => Mux5.IN18
+t_counter[1] => Mux4.IN18
+t_counter[1] => Mux3.IN10
+t_counter[1] => Mux2.IN10
+t_counter[1] => Mux1.IN10
+t_counter[1] => Mux0.IN10
+t_counter[2] => Mux10.IN17
+t_counter[2] => Mux9.IN17
+t_counter[2] => Mux8.IN17
+t_counter[2] => Mux7.IN17
+t_counter[2] => Mux6.IN17
+t_counter[2] => Mux5.IN17
+t_counter[2] => Mux4.IN17
+t_counter[2] => Mux3.IN9
+t_counter[2] => Mux2.IN9
+t_counter[2] => Mux1.IN9
+t_counter[2] => Mux0.IN9
+t_counter[3] => Mux10.IN16
+t_counter[3] => Mux9.IN16
+t_counter[3] => Mux8.IN16
+t_counter[3] => Mux7.IN16
+t_counter[3] => Mux6.IN16
+t_counter[3] => Mux5.IN16
+t_counter[3] => Mux4.IN16
+t_counter[3] => Mux3.IN8
+t_counter[3] => Mux2.IN8
+t_counter[3] => Mux1.IN8
+t_counter[3] => Mux0.IN8
+a_out <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b_out <= <GND>
+c_out <= <GND>
+d_out <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+e_out <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+f_out <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+g_out <= <VCC>
+a2_out <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+b2_out <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+c2_out <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+d2_out <= Mux7.DB_MAX_OUTPUT_PORT_TYPE
+e2_out <= Mux8.DB_MAX_OUTPUT_PORT_TYPE
+f2_out <= Mux9.DB_MAX_OUTPUT_PORT_TYPE
+g2_out <= Mux10.DB_MAX_OUTPUT_PORT_TYPE
+
+
